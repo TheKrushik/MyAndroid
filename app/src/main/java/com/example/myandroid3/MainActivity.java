@@ -3,16 +3,27 @@ package com.example.myandroid3;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import static com.example.myandroid3.SecondActivity.*;
 
-public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final String TAG = "MainActivity1";
+    private static final int REQUEST_CODE = 100;
+
+    EditText etFirstNumber, etSecondNumber;
+    Button btnAdd, btnSubtract, btnMultiply, btnDivide;
+    TextView txtResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,31 +31,69 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate");
 
-        Button button = findViewById(android.R.id.button1);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((Button) v).setText("Click me");
+        findView();
+    }
 
-//                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://google.com"));
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                intent.putExtra(SecondActivity.ARG_FIRST_PARAM, 11);
-                intent.putExtra(SecondActivity.ARG_SECOND_PARAM, 11);
+    private void findView() {
+        etFirstNumber = findViewById(R.id.etFirstNumber);
+        etSecondNumber = findViewById(R.id.etSecondNumber);
+        btnAdd = findViewById(R.id.btnAdd);
+        btnSubtract = findViewById(R.id.btnSubtract);
+        btnMultiply = findViewById(R.id.btnMultiply);
+        btnDivide = findViewById(R.id.btnDivide);
+        txtResult = findViewById(R.id.txtResult);
 
-//                startActivity(intent);
-                startActivityForResult(intent, 11);
-            }
-        });
-//        button.setText("Click me");
+        btnAdd.setOnClickListener(this);
+        btnSubtract.setOnClickListener(this);
+        btnMultiply.setOnClickListener(this);
+        btnDivide.setOnClickListener(this);
     }
 
     @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnAdd:
+                sendDataFromCalculate(KEY_ARG_ADDITION);
+                break;
+            case R.id.btnSubtract:
+                sendDataFromCalculate(KEY_ARG_SUBTRACTION);
+                break;
+            case R.id.btnMultiply:
+                sendDataFromCalculate(KEY_ARG_MULTIPLY);
+                break;
+            case R.id.btnDivide:
+                sendDataFromCalculate(KEY_ARG_DIVIDE);
+                break;
+        }
+    }
+
+    private void sendDataFromCalculate(String operation) {
+
+        int firstNumber = 0;
+        int secondNumber = 0;
+        try {
+            firstNumber = Integer.parseInt(etFirstNumber.getText().toString());
+            secondNumber = Integer.parseInt(etSecondNumber.getText().toString());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Незаполненое число = 0", Toast.LENGTH_SHORT).show();
+        }
+
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        intent.putExtra(ARG_FIRST_PARAM, firstNumber);
+        intent.putExtra(ARG_SECOND_PARAM, secondNumber);
+        intent.putExtra(KEY_ARG_OPERATION, operation);
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (11 == requestCode && Activity.RESULT_OK == resultCode){
+        if (REQUEST_CODE == requestCode && Activity.RESULT_OK == resultCode) {
             if (null != data) {
-                int intExtra = data.getIntExtra(SecondActivity.ARG_RESULT, 0);
-                Log.d(TAG, Integer.toString(intExtra));
+                String resultExtra = data.getStringExtra(ARG_RESULT);
+                txtResult.setText(resultExtra);
             }
         }
     }
@@ -78,4 +127,6 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
     }
+
+
 }

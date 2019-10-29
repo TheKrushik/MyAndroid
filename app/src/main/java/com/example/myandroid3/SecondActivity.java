@@ -9,14 +9,14 @@ import android.util.Log;
 
 public class SecondActivity extends AppCompatActivity {
 
+    enum Operation {
+        ADDITION, SUBTRACTION, MULTIPLY, DIVIDE
+    }
+
     private static final String TAG = "SecondActivity1";
     public static final String ARG_FIRST_PARAM = "firstParam";
     public static final String ARG_SECOND_PARAM = "secondParam";
     public static final String KEY_ARG_OPERATION = "Operation";
-    public static final String KEY_ARG_ADDITION = "Addition";
-    public static final String KEY_ARG_SUBTRACTION = "Subtraction";
-    public static final String KEY_ARG_MULTIPLY = "Multiply";
-    public static final String KEY_ARG_DIVIDE = "Divide";
     public static final String ARG_RESULT = "result";
     public static final String ERROR = "Не выбрана арифметическая операция";
     public static final String ERROR_DIVIDE_0 = "На 0 делить нельзя";
@@ -28,34 +28,33 @@ public class SecondActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate");
         int firstParam = getIntent().getIntExtra(ARG_FIRST_PARAM, 0);
         int secondParam = getIntent().getIntExtra(ARG_SECOND_PARAM, 0);
-        String operation = getIntent().getStringExtra(KEY_ARG_OPERATION);
+        Operation operation = (Operation) getIntent().getSerializableExtra(KEY_ARG_OPERATION);
 
 
-        String stringResult = "";
+        sendResult(firstParam, secondParam, operation);
+    }
 
-        if (operation != null) {
-            stringResult = onCalculate(firstParam, secondParam, operation);
-        }
-
+    private void sendResult(int firstParam, int secondParam, Operation operation) {
+        String stringResult = onCalculate(firstParam, secondParam, operation);
         Log.d(TAG, stringResult);
 
         if (stringResult.equals(ERROR) || stringResult.equals(ERROR_DIVIDE_0)) {
             setResult(Activity.RESULT_CANCELED, new Intent().putExtra(ARG_RESULT, stringResult));
-        }else {
+        } else {
             setResult(Activity.RESULT_OK, new Intent().putExtra(ARG_RESULT, stringResult));
         }
         finish();
     }
 
-    private String onCalculate(int firstParam, int secondParam, String operation) {
+    private String onCalculate(int firstParam, int secondParam, Operation operation) {
         switch (operation) {
-            case KEY_ARG_ADDITION:
+            case ADDITION:
                 return Integer.toString(firstParam + secondParam);
-            case KEY_ARG_SUBTRACTION:
+            case SUBTRACTION:
                 return Integer.toString(firstParam - secondParam);
-            case KEY_ARG_MULTIPLY:
+            case MULTIPLY:
                 return Integer.toString(firstParam * secondParam);
-            case KEY_ARG_DIVIDE:
+            case DIVIDE:
                 try {
                     return Integer.toString(firstParam / secondParam);
                 } catch (ArithmeticException e) {

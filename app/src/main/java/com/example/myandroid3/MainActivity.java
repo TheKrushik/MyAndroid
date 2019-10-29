@@ -22,9 +22,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "MainActivity1";
     private static final int REQUEST_CODE = 100;
 
-    EditText etFirstNumber, etSecondNumber;
-    Button btnAdd, btnSubtract, btnMultiply, btnDivide;
-    TextView txtResult;
+    private EditText etFirstNumber, etSecondNumber;
+    private Button btnAdd, btnSubtract, btnMultiply, btnDivide;
+    private TextView txtResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,21 +65,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final int viewID = v.getId();
         switch (viewID) {
             case R.id.btnAdd:
-                sendDataFromCalculate(KEY_ARG_ADDITION);
+                sendDataFromCalculate(Operation.ADDITION);
                 break;
             case R.id.btnSubtract:
-                sendDataFromCalculate(KEY_ARG_SUBTRACTION);
+                sendDataFromCalculate(Operation.SUBTRACTION);
                 break;
             case R.id.btnMultiply:
-                sendDataFromCalculate(KEY_ARG_MULTIPLY);
+                sendDataFromCalculate(Operation.MULTIPLY);
                 break;
             case R.id.btnDivide:
-                sendDataFromCalculate(KEY_ARG_DIVIDE);
+                sendDataFromCalculate(Operation.DIVIDE);
                 break;
         }
     }
 
-    private void sendDataFromCalculate(String operation) {
+    private void sendDataFromCalculate(Operation operation) {
 
         int firstNumber = 0;
         int secondNumber = 0;

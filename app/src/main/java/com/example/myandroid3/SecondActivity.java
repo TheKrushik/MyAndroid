@@ -18,6 +18,8 @@ public class SecondActivity extends AppCompatActivity {
     public static final String KEY_ARG_MULTIPLY = "Multiply";
     public static final String KEY_ARG_DIVIDE = "Divide";
     public static final String ARG_RESULT = "result";
+    public static final String ERROR = "Не выбрана арифметическая операция";
+    public static final String ERROR_DIVIDE_0 = "На 0 делить нельзя";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,11 @@ public class SecondActivity extends AppCompatActivity {
 
         Log.d(TAG, stringResult);
 
-        setResult(Activity.RESULT_OK, new Intent().putExtra(ARG_RESULT, stringResult));
+        if (stringResult.equals(ERROR) || stringResult.equals(ERROR_DIVIDE_0)) {
+            setResult(Activity.RESULT_CANCELED, new Intent().putExtra(ARG_RESULT, stringResult));
+        }else {
+            setResult(Activity.RESULT_OK, new Intent().putExtra(ARG_RESULT, stringResult));
+        }
         finish();
     }
 
@@ -54,10 +60,10 @@ public class SecondActivity extends AppCompatActivity {
                     return Integer.toString(firstParam / secondParam);
                 } catch (ArithmeticException e) {
                     e.printStackTrace();
-                    return "На 0 делить нельзя";
+                    return ERROR_DIVIDE_0;
                 }
             default:
-                return "Не выбрана арифметическая операция";
+                return ERROR;
         }
     }
 

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import static com.example.myandroid3.SecondActivity.*;
 
 
@@ -61,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        final int viewID = v.getId();
+        switch (viewID) {
             case R.id.btnAdd:
                 sendDataFromCalculate(KEY_ARG_ADDITION);
                 break;
@@ -100,12 +102,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (REQUEST_CODE == requestCode && Activity.RESULT_OK == resultCode) {
+        if (REQUEST_CODE == requestCode)
             if (null != data) {
-                String resultExtra = data.getStringExtra(ARG_RESULT);
-                txtResult.setText(resultExtra);
+                switch (resultCode) {
+                    case Activity.RESULT_OK:
+                    case Activity.RESULT_CANCELED: {
+                        String resultExtra = data.getStringExtra(ARG_RESULT);
+                        txtResult.setText(resultExtra);
+                        break;
+                    }
+                }
             }
-        }
     }
 
     @Override

@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myandroid3.lec4.Main4Activity;
+
 import static com.example.myandroid3.SecondActivity.*;
 
 
@@ -39,6 +41,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ItemListActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        Button lec4 = findViewById(R.id.lec4);
+        lec4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Main4Activity.class);
                 startActivity(intent);
 
             }

@@ -23,8 +23,7 @@ public class BankCardAdapter extends RecyclerView.Adapter<BankCardAdapter.BankCa
     @NonNull
     @Override
     public BankCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bank_card, parent, false);
-        View v = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_2, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bank_card, parent, false);
         return new BankCardViewHolder(v);
 
     }
@@ -33,8 +32,10 @@ public class BankCardAdapter extends RecyclerView.Adapter<BankCardAdapter.BankCa
     public void onBindViewHolder(@NonNull BankCardViewHolder holder, int position) {
         BankCard bankCard = bankCardList.get(position);
 
-        holder.text1.setText(bankCard.getOwnerName());
-        holder.text2.setText(bankCard.getNum());
+        holder.txtOwnerName.setText(bankCard.getOwnerName());
+        holder.txtCardNumber.setText(bankCard.getNum());
+        holder.txtDate.setText(bankCard.getDate());
+        holder.txtBalance.setText(String.valueOf(bankCard.getAmount()));
     }
 
     @Override
@@ -44,15 +45,19 @@ public class BankCardAdapter extends RecyclerView.Adapter<BankCardAdapter.BankCa
 
     public class BankCardViewHolder extends RecyclerView.ViewHolder {
 
-        TextView text1;
-        TextView text2;
+        TextView txtOwnerName;
+        TextView txtCardNumber;
+        TextView txtDate;
+        TextView txtBalance;
 
         public BankCardViewHolder(@NonNull View itemView) {
             super(itemView);
 
-//            textCard = itemView.findViewById(R.id.text_card);
-            text1 = itemView.findViewById(android.R.id.text1);
-            text2 = itemView.findViewById(android.R.id.text2);
+            txtOwnerName = itemView.findViewById(R.id.txtOwnerName);
+            txtCardNumber = itemView.findViewById(R.id.txtCardNumber);
+            txtDate = itemView.findViewById(R.id.txtDate);
+            txtBalance = itemView.findViewById(R.id.txtBalance);
+
         }
     }
 }

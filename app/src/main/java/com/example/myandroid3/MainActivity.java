@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myandroid3.lec4.Main4Activity;
+import com.example.myandroid3.lec5.MasterActivity;
 
 import static com.example.myandroid3.SecondActivity.*;
 
@@ -36,21 +36,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findView();
 
-        Button btnMasterDetail = findViewById(R.id.btnMasterDetail);
-        btnMasterDetail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ItemListActivity.class);
-                startActivity(intent);
+//        Button btnMasterDetail = findViewById(R.id.btnMasterDetail);
+//        btnMasterDetail.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, ItemListActivity.class);
+//                startActivity(intent);
+//
+//            }
+//        });
 
-            }
-        });
-
-        Button lec4 = findViewById(R.id.lec4);
+        Button lec4 = findViewById(R.id.lec5);
         lec4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Main4Activity.class);
+                Intent intent = new Intent(MainActivity.this, MasterActivity.class);
                 startActivity(intent);
 
             }

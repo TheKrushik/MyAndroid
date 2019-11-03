@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.myandroid3.R;
+
 public class SecondActivity extends AppCompatActivity {
 
     enum Operation {

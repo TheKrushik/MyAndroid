@@ -1,19 +1,19 @@
-package com.example.myandroid3.lec4;
+package com.example.myandroid3.lec5;
 
-public class BankCard {
+public class BankCardModel {
 
     private String ownerName;
     private String num;
-    private float amount;
     private String date;
     private String pin;
+    private float balance;
 
-    public BankCard(String ownerName, String num, float amount, String date, String pin) {
+    public BankCardModel(String ownerName, String num, String date, String pin, float balance) {
         this.ownerName = ownerName;
         this.num = num;
-        this.amount = amount;
         this.date = date;
         this.pin = pin;
+        this.balance = balance;
     }
 
     public String getOwnerName() {
@@ -32,14 +32,6 @@ public class BankCard {
         this.num = num;
     }
 
-    public float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
     public String getDate() {
         return date;
     }
@@ -54,5 +46,13 @@ public class BankCard {
 
     public void setPin(String pin) {
         this.pin = pin;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
     }
 }

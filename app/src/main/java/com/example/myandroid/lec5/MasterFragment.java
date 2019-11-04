@@ -1,6 +1,5 @@
 package com.example.myandroid.lec5;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,10 +13,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.myandroid.R;
+import com.example.myandroid.base.IMyListener;
+import com.example.myandroid.base.MyAdapter;
 
-public class MasterFragment extends Fragment implements MyAdapter.IMyAdapter {
+import java.util.List;
 
-    interface IMainFragment{
+public class MasterFragment extends Fragment implements IMyListener {
+
+    interface IMainFragment {
         void onItemClick(int position);
     }
 
@@ -28,11 +31,11 @@ public class MasterFragment extends Fragment implements MyAdapter.IMyAdapter {
         return fragment;
     }
 
-    RecyclerView recyclerView;
-    Button button;
-    IMainFragment listener;
+    private RecyclerView recyclerView;
+    private Button button;
+    private IMainFragment listener;
 
-    MasterFragment setListener(IMainFragment listener){
+    MasterFragment setListener(IMainFragment listener) {
         this.listener = listener;
         return this;
     }
@@ -41,31 +44,36 @@ public class MasterFragment extends Fragment implements MyAdapter.IMyAdapter {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_master, container, false);
 
-        recyclerView = view.findViewById(R.id.list);
-        MyAdapter adapter = new MyAdapter();
-        adapter.setOnItemClickListener(this);
-
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        button = view.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AddCardActivity.class);
-                startActivity(intent);
-            }
-        });
+        setupRecycler(view);
+        setupAddButton(view);
 
         return view;
     }
 
+    private void setupRecycler(View view) {
+        recyclerView = view.findViewById(R.id.list);
+
+        MyAdapter adapter = new MyAdapter();
+        adapter.setListener(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        List<BankCardModel> cards = BankCardManager.getBankCards();
+        adapter.setItems(cards);
+    }
+
+    private void setupAddButton(View view) {
+        button = view.findViewById(R.id.button);
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), AddCardActivity.class);
+            startActivity(intent);
+        });
+    }
 
     @Override
-    public void onItemClick(int position) {
+    public void onItemClicked(int position) {
         if (null != listener) {
             listener.onItemClick(position);
         }
     }
-
 }

@@ -29,4 +29,8 @@ public class BankCardManager {
     public static int getCountCard() {
         return bankCards.size();
     }
+
+    public static List<BankCardModel> getBankCards(){
+        return bankCards;
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.myandroid3;
+package com.example.myandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.myandroid3.R;
+import com.example.myandroid.R;
 
 public class SecondActivity extends AppCompatActivity {
 

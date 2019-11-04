@@ -1,4 +1,4 @@
-package com.example.myandroid3.lec5;
+package com.example.myandroid.lec5;
 
 
 import android.content.Intent;
@@ -15,9 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.myandroid3.R;
-
-import static com.example.myandroid3.lec5.DetailActivity.EXTRA_KEY_POSITION;
+import com.example.myandroid.R;
 
 public class MasterFragment extends Fragment implements View.OnClickListener {
 

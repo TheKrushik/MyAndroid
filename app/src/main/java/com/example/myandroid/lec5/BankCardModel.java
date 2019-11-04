@@ -1,4 +1,4 @@
-package com.example.myandroid3.lec5;
+package com.example.myandroid.lec5;
 
 public class BankCardModel {
 

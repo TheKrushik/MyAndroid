@@ -1,4 +1,4 @@
-package com.example.myandroid3.lec5;
+package com.example.myandroid.lec5;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.myandroid3.R;
-import com.example.myandroid3.lec5.BankCardModel;
-import com.example.myandroid3.lec5.BankCardManager;
+import com.example.myandroid.R;
 
 public class AddCardActivity extends AppCompatActivity implements View.OnClickListener {
 

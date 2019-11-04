@@ -1,4 +1,4 @@
-package com.example.myandroid3.lec5;
+package com.example.myandroid.lec5;
 
 import java.util.ArrayList;
 import java.util.List;

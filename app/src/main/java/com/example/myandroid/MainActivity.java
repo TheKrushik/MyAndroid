@@ -1,4 +1,4 @@
-package com.example.myandroid3;
+package com.example.myandroid;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myandroid3.lec5.MasterActivity;
+import com.example.myandroid.lec5.MasterActivity;
 
-import static com.example.myandroid3.SecondActivity.*;
+import static com.example.myandroid.SecondActivity.*;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

@@ -1,13 +1,11 @@
-package com.example.myandroid3.lec5;
+package com.example.myandroid.lec5;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.myandroid3.R;
-import com.example.myandroid3.lec5.BankCardModel;
-import com.example.myandroid3.lec5.BankCardManager;
+import com.example.myandroid.R;
 
 import java.util.Locale;
 

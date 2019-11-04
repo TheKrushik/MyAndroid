@@ -1,11 +1,11 @@
-package com.example.myandroid3.lec5;
+package com.example.myandroid.lec5;
 
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myandroid3.R;
+import com.example.myandroid.R;
 
 public class MasterActivity extends AppCompatActivity implements MasterFragment.IMainFragment {
 

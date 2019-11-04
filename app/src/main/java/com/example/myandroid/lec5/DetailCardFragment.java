@@ -1,4 +1,4 @@
-package com.example.myandroid3.lec5;
+package com.example.myandroid.lec5;
 
 
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.myandroid3.R;
+import com.example.myandroid.R;
 
 import java.util.Locale;
 

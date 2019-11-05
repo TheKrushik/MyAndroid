@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.myandroid.R;
+import com.example.myandroid.data.BankCardManager;
+import com.example.myandroid.model.BankCardModel;
 
 import java.util.Locale;
 
@@ -19,7 +21,7 @@ import java.util.Locale;
 public class DetailCardFragment extends Fragment {
     public static final String EXTRA_KEY_POSITION = "extra_key_position";
 
-    TextView cardNumber, ownerName, expires, pin, balance;
+    private TextView cardNumber, ownerName, expires, pin, balance;
 
     public static DetailCardFragment newInstance(int position) {
 

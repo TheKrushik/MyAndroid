@@ -6,7 +6,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myandroid.lec5.BankCardModel;
+import com.example.myandroid.model.BankCardModel;
 
 public class MyViewHolder extends BaseViewHolder<BankCardModel, IMyListener<BankCardModel>> {
 

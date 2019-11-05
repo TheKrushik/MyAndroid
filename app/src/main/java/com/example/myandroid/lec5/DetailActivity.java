@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.myandroid.R;
+import com.example.myandroid.data.BankCardManager;
+import com.example.myandroid.model.BankCardModel;
 
 import java.util.Locale;
 

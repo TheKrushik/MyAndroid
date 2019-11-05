@@ -1,6 +1,6 @@
-package com.example.myandroid.lec5;
+package com.example.myandroid.model;
 
-public class BankCardModel {
+public class BankCardModel implements BaseModel {
 
     private String ownerName;
     private String num;
@@ -54,5 +54,15 @@ public class BankCardModel {
 
     public void setBalance(float balance) {
         this.balance = balance;
+    }
+
+    @Override
+    public String getText1() {
+        return getOwnerName();
+    }
+
+    @Override
+    public String getText2() {
+        return getNum();
     }
 }

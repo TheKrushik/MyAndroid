@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.myandroid.R;
+import com.example.myandroid.data.BankCardManager;
+import com.example.myandroid.model.BankCardModel;
 
 public class AddCardActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -37,7 +39,7 @@ public class AddCardActivity extends AppCompatActivity implements View.OnClickLi
         BankCardModel bankCard = new BankCardModel(ownerNameStr, cardNumberStr, expiresStr, pinStr, 0f);
 
         BankCardManager.addBankCard(bankCard);
-        int count = BankCardManager.getCountCard();
+
         finish();
     }
 }

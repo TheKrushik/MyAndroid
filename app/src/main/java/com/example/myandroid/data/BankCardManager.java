@@ -1,11 +1,13 @@
-package com.example.myandroid.lec5;
+package com.example.myandroid.data;
+
+import com.example.myandroid.model.BankCardModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BankCardManager {
 
-    private static List<BankCardModel> bankCards = new ArrayList<BankCardModel>(6) {{
+    private static List<BankCardModel> bankCards = new ArrayList<BankCardModel>() {{
         add(new BankCardModel("Danya", "1234 5678 9012 4578",  "21.02.2017", "1234", 1000f));
         add(new BankCardModel("Vanya", "1234 5678 9012 4578",  "21.02.2017", "1234", 1000f));
         add(new BankCardModel("Olya", "1234 5678 9012 4578",  "21.02.2017", "1234", 1000f));
